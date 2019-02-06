@@ -65,7 +65,7 @@ var convertP6toP3 = function(p6File, callback) {
     var magicNumber = toString([view[0], view[1]]);
     assert(magicNumber === "P6",
       "This program can only convert images from the P6 format (your format: " +
-      magicNumber);
+      magicNumber + ")");
     var i = 2;
     while (isWhitespace(view[i])) {
       ++i;
