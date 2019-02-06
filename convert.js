@@ -1,8 +1,22 @@
 var newMaxVal = 255;
 
+var errorEl = document.getElementById("error");
+var errorContentEl = document.getElementById("error-content");
 var error = function(msg) {
-  alert("Error converting: " + msg);
+  errorEl.style.display = "block";
+  errorEl.style.backgroundColor = "red";
+  errorContentEl.textContent = msg;
   throw msg;
+};
+
+var success = function(msg) {
+  errorEl.style.display = "block";
+  errorEl.style.backgroundColor = "#00DD44";
+  errorContentEl.textContent = msg;
+};
+
+var hideError = function() {
+  errorEl.style.display = "none";
 };
 
 var assert = function(condition, msg) {
@@ -129,7 +143,10 @@ var convertP6toP3 = function(p6File, callback) {
     }
     assert(i == view.length && j == newImage.length,
       "Actual number of pixels did not match specified width and height");
-    callback(new File([newImage.buffer], p6File.name));
+    callback(new File([newImage.buffer], p6File.name, {
+      type: "image/x-portable-pixmap"
+    }));
+    success("Conversion successful!");
   });
   fileReader.readAsArrayBuffer(p6File);
 };
@@ -151,12 +168,18 @@ var convertAndDownload = function(p6File) {
   convertP6toP3(p6File, download);
 };
 
-var handleFiles = function() {
-  var fileList = this.files;
+var handleFiles = function(fileList) {
+  assert(fileList.length > 0, "Please select a file to convert");
   for (var i = 0; i < fileList.length; ++i) {
     convertAndDownload(fileList[i]);
   }
 };
 
 var fileInputEl = document.getElementById("file-input");
-fileInputEl.addEventListener("change", handleFiles);
+var convertButtonEl = document.getElementById("start-conversion");
+convertButtonEl.addEventListener("click", function() {
+  handleFiles(fileInputEl.files);
+});
+
+var hideErrorButtonEl = document.getElementById("hide-error");
+hideErrorButtonEl.addEventListener("click", hideError);

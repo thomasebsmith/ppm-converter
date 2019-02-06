@@ -1,0 +1,48 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+}
+
+#error {
+  background: red;
+  color: white;
+  display: none;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 0.3em;
+  width: 100%;
+}
+
+#hide-error {
+  border: 1px solid white;
+  border-radius: 2px;
+  float: right;
+  margin-right: 10px;
+  padding: 0 3px;
+}
+
+#hide-error:hover {
+  cursor: pointer;
+}
+
+h1 {
+  border-bottom: 1px solid black;
+  margin: 5px;
+  padding: 15px;
+}
+
+#content {
+  margin: 20px;
+}
+
+button {
+  background-color: #00DD44;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  height: 1.4em;
+  margin-top: 15px;
+  width: 150px;
+}

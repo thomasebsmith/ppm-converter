@@ -3,9 +3,24 @@
   <head>
     <meta charset="utf-8">
     <title>PPM Converter - Convert from P6 to P3</title>
+    <link rel="stylesheet" href="main.css">
   </head>
   <body>
-    <input type="file" id="file-input" accept=".ppm">
+    <div id="error">
+      <span id="error-content"></span>
+      <span id="hide-error">X</span>
+    </div>
+    <h1>Convert P6 PPM to P3 PPM</h1>
+    <div id="content">
+      <p>Use this site if you have a binary PPM file (a file starting with
+        &ldquo;P6&rdquo;) that you need to convert to a human-readable PPM file
+        (a file starting with &ldquo;P3&rdquo;).</p>
+      <label for="file-input">Choose a PPM file to convert:</label>
+      <input type="file" name="file-input" id="file-input"
+            accept=".ppm,image/x-portable-pixmap">
+      <br>
+      <button id="start-conversion">Convert</button>
+    </div>
     <script src="convert.js"></script>
   </body>
 </html>
