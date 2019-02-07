@@ -13,7 +13,7 @@ var error = function(msg) {
 };
 
 // success(msg) - Displays `msg` in a green-colored overlay at the top of the
-//  page and throws `msg`.
+//  page.
 var success = function(msg) {
   errorEl.style.display = "block";
   errorEl.style.backgroundColor = "#00DD44";
